@@ -239,7 +239,16 @@
                             </ReplaceLib.ReplacerDef>
                         </value>
                     </li>
-
+                    
+                    <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="VFEM2_Palisade"]/stuffCategories</xpath>
+                    <value>
+                        <stuffCategories>
+                        			<li>DankPyon_RawWood</li>
+                        </stuffCategories>
+                    </value>
+                  </li>
+                  
                     <li Class="PatchOperationReplace">
                         <xpath>Defs/ThingDef[defName="VFEM2_Palisade"]/costStuffCount</xpath>
                         <value>
