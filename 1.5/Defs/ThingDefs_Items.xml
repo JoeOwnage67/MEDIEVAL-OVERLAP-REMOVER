@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+  <ThingDef ParentName="ResourceBase">
+		<defName>Joe_HornetQueen</defName>
+		<label>hornet queen</label>
+		<description>The matriarch of a hornet colony. Unlike bees, they consume carrion and produce potent hornet honey.</description>
+		<stackLimit>1</stackLimit>
+		<graphicData>
+			<texPath>Resources/HornetQueen</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1,1)</drawSize>
+		</graphicData>
+		<statBases>
+			<MarketValue>200</MarketValue>
+			<Mass>0.025</Mass>
+		</statBases>
+		<thingCategories>
+			<li>ResourcesRaw</li>
+		</thingCategories>
+	</ThingDef>
+
+  
+</Defs>

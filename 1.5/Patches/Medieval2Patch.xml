@@ -7,6 +7,7 @@
                 <operations>
 
                 <!-- apiary/honey/honeycomb/mead -->
+                <!-- Ferny and I realized that VFE honey is C#, so we can't change VFE honey to MO honey-->
                     <li Class="PatchOperationAdd">
                         <xpath>/Defs</xpath>
                         <value>
@@ -14,12 +15,8 @@
                                 <defName>JOE_MO_VFEM2_HoneyStuff</defName>
                                 <replacers>
                                     <li>
-                                        <replace>DankPyon_Apiary</replace>
-                                        <with>VFEM2_Apiary</with>
-                                    </li>
-                                    <li>
-                                        <replace>VFEM2_Honey</replace>
-                                        <with>DankPyon_Honey</with>
+                                        <replace>DankPyon_Honey</replace>
+                                        <with>VFEM2_Honey</with>
                                     </li>
                                     <li>
                                         <replace>VFEM2_Mead</replace>
@@ -30,22 +27,66 @@
                         </value>
                     </li>
 
+                <!-- reflavour MO apiary -->    
                     <li Class="PatchOperationReplace">
-                        <xpath>Defs/ThingDef[defName="DankPyon_Honeycomb"]/label</xpath>
+                        <xpath>Defs/ThingDef[defName="DankPyon_Apiary"]/label</xpath>
                         <value>
-                            <label>honeycomb</label>
+                            <label>artifical hornet nest</label>
                         </value>
                     </li>
+
                     <li Class="PatchOperationReplace">
-                        <xpath>Defs/ThingDef[defName="DankPyon_Honeycomb"]/description</xpath>
+                        <xpath>Defs/ThingDef[defName="DankPyon_Apiary"]/description</xpath>
                         <value>
-                            <description>Raw honeycombs which can be extracted to gain wax and honey.</description>
+                            <description>An artifical hornet nest. An extraordinary structure crafted from wood, clay, iron and woven straw. The hive houses a swarm of specially bred hornets, nurtured to produce a unique, viscous substance known as hornet honey. Unlike ordinary honey, hornet honey is rich in nutrients, granting those who consume it bursts of energy and resilience—an invaluable resource for knights preparing for battle or peasants enduring harsh winters. The cultivation of horney honey is a very time consuming process.</description>
                         </value>
                     </li>
-                    <li Class="PatchOperationReplace">
-                        <xpath>Defs/ThingDef[defName="DankPyon_Honey"]/label</xpath>
+
+                <!-- have hornet nest give hornet queen -->
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="DankPyon_HornetNest"]/killedLeavings</xpath>
                         <value>
-                            <label>honey</label>
+                            <Joe_HornetQueen>1</Joe_HornetQueen>    
+                        </value>
+                    </li>
+
+                <!-- have apiary require hornet queen -->
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="DankPyon_Apiary"]/costList</xpath>
+                        <value>
+                            <costList>
+                                <DankPyon_IronIngot>5</DankPyon_IronIngot>
+                                <Joe_HornetQueen>1</Joe_HornetQueen>
+                                <DankPyon_Clay>15</DankPyon_Clay>
+                                <DankPyon_Straw>10</DankPyon_Straw>
+                            </costList>
+                        </value>
+                    </li>
+
+                <!-- decrease yield -->
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="DankPyon_Apiary"]//comps/li[@Class="MedievalOverhaul.CompProperties_ThingProducer"]/timeRequired</xpath>
+                        <value>
+                            <timeRequired>1500000</timeRequired>
+                        </value>
+                    </li>
+
+                <!-- desired products will be produced -->
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="DankPyon_Apiary"]//comps/li[@Class="MedievalOverhaul.CompProperties_ThingProducer"]/items</xpath>
+                        <value>
+                            <items>
+                                <li>
+                                    <thingDef>DankPyon_HornetHoney</thingDef>
+                                    <countRange>3~6</countRange>
+                                    <weight>1</weight>
+                                </li>
+                                <li>
+                                    <thingDef>Joe_HornetQueen</thingDef>
+                                    <countRange>-25~1</countRange>
+                                    <weight>1</weight>
+                                </li>
+                            </items>
                         </value>
                     </li>
 
