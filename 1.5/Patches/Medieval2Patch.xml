@@ -73,18 +73,18 @@
                                         <replace>VFEM2_RawGrapes</replace>
                                         <with>DankPyon_RawGrapes</with>
                                     </li>
+                                    <li>
+                                        <replace>VFEM2_MeadFermentingBarrel</replace>
+                                        <with>BarrelProcessor</with>
+                                    </li>
+                                    <li>
+                                        <replace>VFEM2_VFEM2_WineBarrel</replace>
+                                        <with>BarrelProcessor</with>
+                                    </li>
                                 </replacers>
                             </ReplaceLib.ReplacerDef>
                         </value>
                     </li>   
-
-                    <!-- hide wine barrel -->
-                    <li Class="PatchOperationReplace">
-                    <xpath>Defs/ThingDef[defName="VFEM2_MeadFermentingBarrel"]/designationCategory</xpath>
-                        <value>
-                            <designationCategory></designationCategory>
-                        </value>
-                    </li>
 
                     <!-- add draught lab recipes to MO Alchemy Table -->
                     <li Class="PatchOperationReplace">
