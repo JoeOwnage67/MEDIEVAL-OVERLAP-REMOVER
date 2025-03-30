@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Patch>
+
+<!-- VFE MEDIEVAL 2 OVERLAP -->
+	<Operation Class="PatchOperationSequence">
+                <operations>
+
+                <!-- apiary/honey/honeycomb/mead -->
+                    <li Class="PatchOperationAdd">
+                        <xpath>/Defs</xpath>
+                        <value>
+                            <ReplaceLib.ReplacerDef>
+                                <defName>JOE_MO_VFEM2_HoneyStuff</defName>
+                                <replacers>
+                                    <li>
+                                        <replace>DankPyon_Apiary</replace>
+                                        <with>VFEM2_Apiary</with>
+                                    </li>
+                                    <li>
+                                        <replace>VFEM2_Honey</replace>
+                                        <with>DankPyon_Honey</with>
+                                    </li>
+                                    <li>
+                                        <replace>VFEM2_Mead</replace>
+                                        <with>DankPyon_Mead</with>
+                                    </li>
+                                </replacers>
+                            </ReplaceLib.ReplacerDef>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="DankPyon_Honeycomb"]/label</xpath>
+                        <value>
+                            <label>honeycomb</label>
+                        </value>
+                    </li>
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="DankPyon_Honeycomb"]/description</xpath>
+                        <value>
+                            <description>Raw honeycombs which can be extracted to gain wax and honey.</description>
+                        </value>
+                    </li>
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="DankPyon_Honey"]/label</xpath>
+                        <value>
+                            <label>honey</label>
+                        </value>
+                    </li>
+
+                    <!-- grapes/must/wine-->   
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>/Defs</xpath>
+                        <value>
+                            <ReplaceLib.ReplacerDef>
+                                <defName>JOE_MO_VFEM2_GrapeStuff</defName>
+                                <replacers>
+                                    <li>
+                                        <replace>VFEM2_Plant_Grape</replace>
+                                        <with>DankPyon_Plant_Grape</with>
+                                    </li>
+                                    <li>
+                                        <replace>VFEM2_Must</replace>
+                                        <with>DankPyon_MustWine</with>
+                                    </li>
+                                    <li>
+                                        <replace>VFEM2_Wine</replace>
+                                        <with>DankPyon_Wine</with>
+                                    </li>
+                                    <li>
+                                        <replace>VFEM2_RawGrapes</replace>
+                                        <with>DankPyon_RawGrapes</with>
+                                    </li>
+                                </replacers>
+                            </ReplaceLib.ReplacerDef>
+                        </value>
+                    </li>   
+
+                    <!-- hide wine barrel -->
+                    <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="VFEM2_MeadFermentingBarrel"]/designationCategory</xpath>
+                        <value>
+                            <designationCategory></designationCategory>
+                        </value>
+                    </li>
+
+                    <!-- add draught lab recipes to MO Alchemy Table -->
+                    <li Class="PatchOperationReplace">
+                      <xpath>Defs/ThingDef[@Name="VFEM2_DraughtBase"]/recipeMaker/recipeUsers</xpath>
+                      <value>
+                        <recipeUsers>
+                            <li>DankPyon_AlchemyBench</li>
+                        </recipeUsers>
+                      </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                      <xpath>Defs/RecipeDef[defName="VFEM2_MakeHerbalMedicine"]/recipeUsers</xpath>
+                      <value>
+                        <recipeUsers>
+                            <li>DankPyon_AlchemyBench</li>
+                        </recipeUsers>
+                      </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                      <xpath>Defs/RecipeDef[defName="VFEM2_Make_ChemfuelFromWood"]/recipeUsers</xpath>
+                      <value>
+                        <recipeUsers>
+                            <li>DankPyon_AlchemyBench</li>
+                        </recipeUsers>
+                      </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                      <xpath>Defs/RecipeDef[defName="VFEM2_Make_ChemfuelFromOrganics"]/recipeUsers</xpath>
+                      <value>
+                        <recipeUsers>
+                            <li>DankPyon_AlchemyBench</li>
+                        </recipeUsers>
+                      </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/WorkGiverDef[defName="VFEM2_DoBillsAlchemyTable"]/fixedBillGiverDefs</xpath>
+                        <value>
+                            <fixedBillGiverDefs>
+                                <li>DankPyon_AlchemyBench</li>
+                            </fixedBillGiverDefs>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/WorkGiverDef[defName="VFEM2_DoBillsAlchemyTable_Electric"]/fixedBillGiverDefs</xpath>
+                        <value>
+                            <fixedBillGiverDefs>
+                                <li>DankPyon_AlchemyBench</li>
+                            </fixedBillGiverDefs>
+                        </value>
+                    </li>
+
+                    <!-- hide draught tables -->
+                    <li Class="PatchOperationReplace">
+                      <xpath>Defs/ThingDef[defName="VFEM2_AlchemicalWorkbench"]/designationCategory</xpath>
+                      <value>
+                        <designationCategory></designationCategory>
+                      </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                      <xpath>Defs/ThingDef[defName="VFEM2_AlchemicalWorkbench_Electric"]/designationCategory</xpath>
+                      <value>
+                        <designationCategory></designationCategory>
+                      </value>
+                    </li>
+                    
+                    <!-- castle wall -->
+                    <li Class="PatchOperationAdd">
+                        <xpath>/Defs</xpath>
+                        <value>
+                            <ReplaceLib.ReplacerDef>
+                                <defName>JOE_MO_VFEM2_CastleWalls</defName>
+                                <replacers>
+                                    <li>
+                                        <replace>VFEM2_CastleWall</replace>
+                                        <with>DankPyon_CastleWall</with>
+                                    </li>                                
+                                </replacers>
+                            </ReplaceLib.ReplacerDef>
+                        </value>
+                    </li>   
+
+                    <!-- hearth -->
+                    <li Class="PatchOperationReplace">
+                      <xpath>Defs/ThingDef[defName="VFEM2_Hearth"]/label</xpath>
+                      <value>
+                        <label>large hearth</label>
+                      </value>
+                    </li>
+
+                    <!-- fur beds -->
+                    <li Class="PatchOperationAdd">
+                        <xpath>/Defs</xpath>
+                        <value>
+                            <ReplaceLib.ReplacerDef>
+                                <defName>JOE_MO_VFEM2_FurBeds</defName>
+                                <replacers>
+                                    <li>
+                                        <replace>VFEM2_FurBed</replace>
+                                        <with>DankPyon_BedFur</with>
+                                    </li>       
+                                    <li>
+                                        <replace>VFEM2_DoubleFurBed</replace>
+                                        <with>DankPyon_BedFurDouble</with>
+                                    </li>                                
+                                </replacers>
+                            </ReplaceLib.ReplacerDef>
+                        </value>
+                    </li>   
+
+                    <!-- hide linkable anvil -->
+                    <li Class="PatchOperationAdd">
+                      <xpath>Defs/ThingDef[defName="VFEM2_SmithingAnvil"]</xpath>
+                      <value>
+                        <designationCategory></designationCategory>
+                      </value>
+                    </li>
+
+                    <!-- forge bellows -->
+                    <li Class="PatchOperationAdd">
+                        <xpath>/Defs</xpath>
+                        <value>
+                            <ReplaceLib.ReplacerDef>
+                                <defName>JOE_MO_VFEM2_Bellows</defName>
+                                <replacers>
+                                    <li>
+                                        <replace>DankPyon_Bellows</replace>
+                                        <with>VFEM2_ForgeBellows</with>
+                                    </li>                                
+                                </replacers>
+                            </ReplaceLib.ReplacerDef>
+                        </value>
+                    </li>
+                    
+                    <!-- palisade walls -->
+                    <li Class="PatchOperationAdd">
+                        <xpath>/Defs</xpath>
+                        <value>
+                            <ReplaceLib.ReplacerDef>
+                                <defName>JOE_MO_VFEM2_PalisadeWalls</defName>
+                                <replacers>
+                                    <li>
+                                        <replace>DankPyon_Palisade</replace>
+                                        <with>VFEM2_Palisade</with>
+                                    </li>
+                                </replacers>
+                            </ReplaceLib.ReplacerDef>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="VFEM2_Palisade"]/costStuffCount</xpath>
+                        <value>
+                            <costStuffCount>8</costStuffCount>
+                        </value>
+                    </li> 
+
+                </operations>
+	</Operation>
+</Patch>	

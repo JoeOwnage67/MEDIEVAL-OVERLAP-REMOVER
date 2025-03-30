@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<name>Medieval Overlap Remover</name>
+	<author>JoeOwnage</author>
+	<supportedVersions><li>1.5</li></supportedVersions>
+	<packageId>joeownage.overlap.remover</packageId>
+	<description>This mod uses ReplaceLib (thanks Fernie!) to get rid of the overlap between Medieval Overhaul and Vanilla Factions Expanded: Medieval 2. - Added compatibility patch for Medieval Overhaul + VFE Medieval 2. De-duplication of Apiary, Honey, Mead, Grapes, Must, Wine, Castle Wall, Hearth, Fur Beds, Bellows linkable, Palisade Walls. Hides VFEM2 Wine Barrel, Draught Labs (recipes moved to Alchemy Table), Linkable Anvil.</description>
+	<modDependencies>
+        <li>
+            <packageId>DankPyon.Medieval.Overhaul</packageId>
+            <displayName>Medieval Overhaul</displayName>
+            <steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=3219596926</steamWorkshopUrl>
+        </li>
+        <li>
+            <packageId>OskarPotocki.VFE.Medieval2</packageId>
+            <displayName>Vanilla Factions Expanded - Medieval 2</displayName>
+            <steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=3444347874</steamWorkshopUrl>
+	    </li>
+        <li>
+            <packageId>ferny.ReplaceLib</packageId>
+            <displayName>ReplaceLib</displayName>
+            <steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=3417393194</steamWorkshopUrl>
+	    </li>
+    </modDependencies>
+	
+	<loadAfter>
+		<li>ferny.ReplaceLib</li>
+		<li>DankPyon.Medieval.Overhaul</li>
+		<li>OskarPotocki.VFE.Medieval2</li>
+	</loadAfter>
+</ModMetaData>
