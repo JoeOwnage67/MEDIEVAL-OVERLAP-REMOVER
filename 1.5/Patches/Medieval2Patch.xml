@@ -65,7 +65,7 @@
 
                 <!-- decrease yield -->
                     <li Class="PatchOperationReplace">
-                        <xpath>Defs/ThingDef[defName="DankPyon_Apiary"]//comps/li[@Class="MedievalOverhaul.CompProperties_ThingProducer"]/timeRequired</xpath>
+                        <xpath>Defs/ThingDef[defName="DankPyon_Apiary"]/comps/li[@Class="MedievalOverhaul.CompProperties_ThingProducer"]/timeRequired</xpath>
                         <value>
                             <timeRequired>1500000</timeRequired>
                         </value>
@@ -90,8 +90,91 @@
                         </value>
                     </li>
 
-                    <!-- grapes/must/wine-->   
+                    <!-- hide VFEM2 barrels -->
+                    <li Class="PatchOperationRemove">
+                      <xpath>Defs/ThingDef[defName="VFEM2_MeadFermentingBarrel"]/researchPrerequisites</xpath>                                       
+                    </li>
 
+                    <!--<li Class="PatchOperationReplace">
+                      <xpath>Defs/ThingDef[defName="VFEM2_MeadFermentingBarrel"]/designationCategory</xpath>
+                      <value>
+                        <designationCategory></designationCategory>
+                      </value>
+                    </li>-->
+
+                    <li Class="PatchOperationRemove">
+                      <xpath>Defs/ThingDef[defName="VFEM2_WineBarrel"]/researchPrerequisites</xpath>                                       
+                    </li>
+
+                    <!--<li Class="PatchOperationReplace">
+                      <xpath>Defs/ThingDef[defName="VFEM2_WineBarrel"]/designationCategory</xpath>
+                      <value>
+                        <designationCategory></designationCategory>
+                      </value>
+                    </li>-->
+
+                    <!-- remove VFEM2 from processor barrel-->
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BarrelProcessor"]/comps/li[@Class="ProcessorFramework.CompProperties_Processor"]/processes</xpath>
+                        <value>
+                            <processes>
+                                <li>Beer</li>
+                            </processes>
+                        </value>
+                    </li>
+
+                    <!-- add MO recipes back to processor -->
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BarrelProcessor"]/comps/li[1]/processes</xpath>
+                        <value>
+                            <li>DankPyon_WortIntoAle</li>
+                            <li>DankPyon_MustIntoWine</li>
+                            <li>DankPyon_HoneyIntoMead</li>
+                            <li>DankPyon_MustIntoMulberryWine</li>
+                            <li>DankPyon_MustIntoGriffonBerry</li>
+                            <li MayRequire="DankPyon.Medieval.Overhaul.House.Roxmont">DankPyon_RoxberryStoutWort_Into_RoxberryStout</li>
+                        </value>
+                    </li>
+
+                    <!-- put wine behind VFEM2_Wine -->
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="DankPyon_Plant_Grape"]/plant/sowResearchPrerequisites</xpath>
+                        <value>
+                            <sowResearchPrerequisites>
+                                <li>VFEM2_Wine</li>
+                            </sowResearchPrerequisites>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/RecipeDef[defName="DankPyon_MakeMustWine"]/researchPrerequisites</xpath>
+                        <value>
+                            <researchPrerequisites>
+                                <li>VFEM2_Wine</li>
+                            </researchPrerequisites>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="DankPyon_Wine"]/researchPrerequisites</xpath>
+                        <value>
+                            <researchPrerequisites>
+                                <li>VFEM2_Wine</li>
+                            </researchPrerequisites>
+                        </value>
+                    </li>
+
+                    <!-- put VFEM2_Wine behind beer brewing -->
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ResearchProjectDef[defName="VFEM2_Wine"]</xpath>
+                        <value>
+                            <prerequisites>
+                                <li>Brewing</li>
+                            </prerequisites>
+                        </value>
+                    </li>
+
+                    <!-- grapes/must/wine-->   
                     <li Class="PatchOperationAdd">
                         <xpath>/Defs</xpath>
                         <value>
@@ -181,8 +264,17 @@
                             </fixedBillGiverDefs>
                         </value>
                     </li>
+                    
+                    <!-- remove draught lab pre-reqs -->
+                    <li Class="PatchOperationRemove">
+                      <xpath>Defs/ThingDef[defName="VFEM2_AlchemicalWorkbench"]/researchPrerequisites</xpath>                      
+                    </li>
 
-                    <!-- hide draught tables -->
+                    <li Class="PatchOperationRemove">
+                      <xpath>Defs/ThingDef[defName="VFEM2_AlchemicalWorkbench_Electric"]/researchPrerequisites</xpath>                                       
+                    </li>
+
+                    <!-- hide draught lab benches -->
                     <li Class="PatchOperationReplace">
                       <xpath>Defs/ThingDef[defName="VFEM2_AlchemicalWorkbench"]/designationCategory</xpath>
                       <value>
@@ -195,6 +287,42 @@
                       <value>
                         <designationCategory></designationCategory>
                       </value>
+                    </li>
+
+                    <!-- draught research -->
+                    <li Class="PatchOperationReplace">
+                      <xpath>Defs/ResearchProjectDef[defName="VFEM2_Alchemy"]/label</xpath>
+                      <value>
+                        <label>alchemical draughts</label>
+                      </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                      <xpath>Defs/ResearchProjectDef[defName="VFEM2_Alchemy"]/prerequisites</xpath>
+                      <value>
+                        <prerequisites>
+                            <li>DankPyon_Alchemy</li>
+                        </prerequisites>
+                      </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                      <xpath>Defs/ResearchProjectDef[defName="VFEM2_Alchemy"]/description</xpath>
+                      <value>
+                        <description>Learn to cultivate various alchemical reagents which can then be combined into various alchemical draughts.</description>		
+                      </value>
+                    </li>
+
+                    <!-- hide VFEM2 castle wall -->
+                    <li Class="PatchOperationReplace">
+                      <xpath>Defs/ThingDef[defName="VFEM2_CastleWall"]/designationCategory</xpath>
+                      <value>
+                        <designationCategory></designationCategory>
+                      </value>
+                    </li>
+
+                    <li Class="PatchOperationRemove">
+                      <xpath>Defs/ThingDef[defName="VFEM2_CastleWall"]/researchPrerequisites</xpath>
                     </li>
                     
                     <!-- castle wall -->
@@ -221,6 +349,196 @@
                       </value>
                     </li>
 
+                    <li Class="PatchOperationReplace">
+                      <xpath>Defs/ThingDef[defName="VFEM2_HearthDarklight"]/label</xpath>
+                      <value>
+                        <label>large darklight hearth</label>
+                      </value>
+                    </li>
+
+                    <!-- hide VFEM2 fur beds and remove research pre reqs -->
+                    <li Class="PatchOperationReplace">
+                      <xpath>Defs/ThingDef[defName="VFEM2_FurBed"]</xpath>
+                      <value>
+                        <ThingDef ParentName="BuildingBase">
+                            <defName>VFEM2_FurBed</defName>
+                            <label>fur bed</label>
+                            <description>A wood-framed bed stuffed with dried grasses and covered in a variety of pelts and furs to provide extra insulation during frigid nights. The warmth of this bed counters hypothermia.</description>
+                            <graphicData>
+                                <texPath>Things/Building/Furniture/Bed/BedPelts</texPath>
+                                <graphicClass>Graphic_Multi</graphicClass>
+                                <shaderType>CutoutComplex</shaderType>
+                                <drawSize>(2,2)</drawSize>
+                                <damageData>
+                                    <rect>(0,0.05,1,1.95)</rect>
+                                </damageData>
+                            </graphicData>
+                            <castEdgeShadows>True</castEdgeShadows>
+                            <statBases>
+                                <MaxHitPoints>125</MaxHitPoints>
+                                <Flammability>1.0</Flammability>
+                                <Mass>25</Mass>
+                                <BedRestEffectiveness>0.98</BedRestEffectiveness>
+                                <ImmunityGainSpeedFactor>1.06</ImmunityGainSpeedFactor>
+                                <Comfort>0.71</Comfort>
+                                <WorkToBuild>750</WorkToBuild>
+                                <SurgerySuccessChanceFactor>0.8</SurgerySuccessChanceFactor>
+                            </statBases>
+                            <size>(1,2)</size>
+                            <stuffCategories>
+                                <li>Fabric</li>
+                                <li>Leathery</li>
+                            </stuffCategories>
+                            <costList>
+                                <WoodLog>25</WoodLog>
+                            </costList>
+                            <costStuffCount>35</costStuffCount>
+                            <researchPrerequisites></researchPrerequisites>
+                            <building>
+                                <bed_showSleeperBody>False</bed_showSleeperBody>
+                                <bed_healPerDay>4</bed_healPerDay>
+                                <buildingTags>
+                                    <li>Bed</li>
+                                </buildingTags>
+                            </building>
+                            <fillPercent>0.4</fillPercent>
+                            <pathCost>50</pathCost>
+                            <staticSunShadowHeight>0.17</staticSunShadowHeight>
+                            <techLevel>Medieval</techLevel>
+                            <uiIconScale>0.90</uiIconScale>
+                            <tickerType>Rare</tickerType>
+                            <comps>
+                                <li Class="CompProperties_AffectedByFacilities">
+                                    <linkableFacilities>
+                                        <li>EndTable</li>
+                                        <li>Dresser</li>
+                                        <li MayRequire="VanillaExpanded.VFECore">Table_LightEndTable</li>
+                                        <li MayRequire="VanillaExpanded.VFECore">Table_RoyalDresser</li>
+                                        <li MayRequire="VanillaExpanded.VFECore">Table_RoyalEndTable</li>
+                                        <li MayRequire="VanillaExpanded.VFECore">Table_Wardrobe</li>
+                                        <li MayRequire="VanillaExpanded.VFESpacer">Table_IlluminatedEndTable</li>
+                                        <li MayRequire="VanillaExpanded.VFESpacer">Table_IlluminatedDresser</li>
+                                    </linkableFacilities>
+                                </li>
+                                    <li Class="VFEMedieval.CompProperties_CureHypothermia"/>
+                                <li>
+                                    <compClass>CompQuality</compClass>
+                                </li>
+                                <li Class="CompProperties_AssignableToPawn">
+                                    <drawAssignmentOverlay>false</drawAssignmentOverlay>
+                                    <compClass>CompAssignableToPawn_Bed</compClass>
+                                </li>
+                            </comps>
+                            <designationCategory></designationCategory>
+                            <minifiedDef>MinifiedThing</minifiedDef>
+                            <thingCategories>
+                            <li>BuildingsFurniture</li>
+                            </thingCategories>
+                            <thingClass>Building_Bed</thingClass>
+                            <altitudeLayer>Building</altitudeLayer>                            
+                            <drawGUIOverlay>true</drawGUIOverlay>
+                            <canOverlapZones>false</canOverlapZones>
+                            <placeWorkers>
+                            <li>PlaceWorker_ShowFacilitiesConnections</li>
+                            </placeWorkers>
+                            <passability>PassThroughOnly</passability>
+                            <defaultPlacingRot>South</defaultPlacingRot>
+                            <uiOrder>2020</uiOrder>                            
+                        </ThingDef>
+                      </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                      <xpath>Defs/ThingDef[defName="VFEM2_DoubleFurBed"]</xpath>
+                      <value>
+                        <ThingDef ParentName="BuildingBase">
+                            <defName>VFEM2_DoubleFurBed</defName>
+                            <label>double fur bed</label>
+                            <description>A two-person, wood-framed bed stuffed with dried grasses and covered in a variety of pelts and furs to provide extra insulation during frigid nights. The warmth of this bed counters hypothermia.</description>
+                            <graphicData>
+                                <texPath>Things/Building/Furniture/Bed/DoubleBedPelts</texPath>
+                                <graphicClass>Graphic_Multi</graphicClass>
+                                <shaderType>CutoutComplex</shaderType>
+                                <drawSize>(2.05,2.05)</drawSize>
+                                <damageData>
+                                    <rect>(0,0.05,1,1.95)</rect>
+                                </damageData>
+                            </graphicData>
+                            <castEdgeShadows>True</castEdgeShadows>
+                            <statBases>
+                                <MaxHitPoints>175</MaxHitPoints>
+                                <Flammability>1.0</Flammability>
+                                <Mass>50</Mass>
+                                <BedRestEffectiveness>0.98</BedRestEffectiveness>
+                                <ImmunityGainSpeedFactor>1.06</ImmunityGainSpeedFactor>
+                                <Comfort>0.71</Comfort>
+                                <WorkToBuild>1500</WorkToBuild>
+                                <SurgerySuccessChanceFactor>0.8</SurgerySuccessChanceFactor>
+                            </statBases>
+                            <size>(2,2)</size>
+                            <stuffCategories>
+                                <li>Fabric</li>
+                                <li>Leathery</li>
+                            </stuffCategories>
+                            <costStuffCount>75</costStuffCount>
+                            <researchPrerequisites></researchPrerequisites>
+                            <costList>
+                                <WoodLog>45</WoodLog>
+                            </costList>
+                            <building>
+                                <bed_showSleeperBody>False</bed_showSleeperBody>
+                                <bed_healPerDay>3</bed_healPerDay>
+                                <buildingTags>
+                                    <li>Bed</li>
+                                </buildingTags>
+                            </building>
+                            <fillPercent>0.4</fillPercent>
+                            <pathCost>60</pathCost>
+                            <staticSunShadowHeight>0.17</staticSunShadowHeight>
+                            <techLevel>Medieval</techLevel>
+                            <uiIconScale>0.90</uiIconScale>
+                            <tickerType>Rare</tickerType>
+                            <comps>
+                                <li Class="CompProperties_AffectedByFacilities">
+                                    <linkableFacilities>
+                                        <li>EndTable</li>
+                                        <li>Dresser</li>
+                                        <li MayRequire="VanillaExpanded.VFECore">Table_LightEndTable</li>
+                                        <li MayRequire="VanillaExpanded.VFECore">Table_RoyalDresser</li>
+                                        <li MayRequire="VanillaExpanded.VFECore">Table_RoyalEndTable</li>
+                                        <li MayRequire="VanillaExpanded.VFECore">Table_Wardrobe</li>
+                                        <li MayRequire="VanillaExpanded.VFESpacer">Table_IlluminatedEndTable</li>
+                                        <li MayRequire="VanillaExpanded.VFESpacer">Table_IlluminatedDresser</li>
+                                    </linkableFacilities>
+                                </li>
+                                    <li Class="VFEMedieval.CompProperties_CureHypothermia"/>
+                                <li>
+                                    <compClass>CompQuality</compClass>
+                                </li>
+                                <li Class="CompProperties_AssignableToPawn">
+                                    <drawAssignmentOverlay>false</drawAssignmentOverlay>
+                                    <compClass>CompAssignableToPawn_Bed</compClass>
+                                </li>
+                            </comps>
+                            <designationCategory></designationCategory>
+                            <minifiedDef>MinifiedThing</minifiedDef>
+                            <thingCategories>
+                            <li>BuildingsFurniture</li>
+                            </thingCategories>
+                            <thingClass>Building_Bed</thingClass>
+                            <altitudeLayer>Building</altitudeLayer>                            
+                            <drawGUIOverlay>true</drawGUIOverlay>
+                            <canOverlapZones>false</canOverlapZones>
+                            <placeWorkers>
+                            <li>PlaceWorker_ShowFacilitiesConnections</li>
+                            </placeWorkers>
+                            <passability>PassThroughOnly</passability>
+                            <defaultPlacingRot>South</defaultPlacingRot>
+                            <uiOrder>2020</uiOrder>                           
+                        </ThingDef>
+                      </value>
+                    </li>
+
                     <!-- fur beds -->
                     <li Class="PatchOperationAdd">
                         <xpath>/Defs</xpath>
@@ -239,14 +557,76 @@
                                 </replacers>
                             </ReplaceLib.ReplacerDef>
                         </value>
-                    </li>   
+                    </li>
 
-                    <!-- hide linkable anvil -->
-                    <li Class="PatchOperationAdd">
-                      <xpath>Defs/ThingDef[defName="VFEM2_SmithingAnvil"]</xpath>
+                     <!-- remove smithing anvil pre-reqs and hide -->
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="VFEM2_SmithingAnvil"]</xpath>   
+                        <value>
+                              <ThingDef ParentName="BuildingBase">
+                                <defName>VFEM2_SmithingAnvil</defName>
+                                <label>smithing anvil</label>
+                                <description>A heavy steel anvil used to shape metalwork with greater precision. Increases work speed when placed near a smithy. Items of awful and poor quality crafted on the linked workbench have a chance of being upgraded by one quality level. One workbench can only use one anvil.</description>
+                                <graphicData>
+                                <texPath>Things/Building/Production/Linkables/SmithingAnvil</texPath>
+                                <graphicClass>Graphic_Single</graphicClass>
+                                <drawSize>(1,1)</drawSize>
+                                </graphicData>
+                                <castEdgeShadows>false</castEdgeShadows>
+                                <fillPercent>0.5</fillPercent>
+                                <rotatable>false</rotatable>
+                                <statBases>
+                                <MaxHitPoints>100</MaxHitPoints>
+                                <WorkToBuild>1800</WorkToBuild>
+                                <MarketValue>120</MarketValue>
+                                <Mass>10</Mass>
+                                <Flammability>0</Flammability>
+                                </statBases>
+                                <size>(1,1)</size>
+                                <costList>
+                                <Steel>100</Steel>
+                                </costList>
+                                <building>
+                                <destroySound>BuildingDestroyed_Metal_Small</destroySound>
+                                </building>
+                                <constructionSkillPrerequisite>4</constructionSkillPrerequisite>
+                                <comps>
+                                <li Class="CompProperties_Facility">
+                                    <statOffsets>
+                                    <WorkTableWorkSpeedFactor>0.02</WorkTableWorkSpeedFactor>
+                                    </statOffsets>
+                                    <maxSimultaneous>1</maxSimultaneous>
+                                    <maxDistance>3.9</maxDistance>
+                                </li>
+                                </comps>
+                                <altitudeLayer>Building</altitudeLayer>
+                                <passability>PassThroughOnly</passability>
+                                <canOverlapZones>false</canOverlapZones>
+                                <pathCost>42</pathCost>
+                                <terrainAffordanceNeeded>Light</terrainAffordanceNeeded> 
+                                <researchPrerequisites></researchPrerequisites>
+                                <designationCategory></designationCategory>
+                                <minifiedDef>MinifiedThing</minifiedDef>
+                                <thingCategories>
+                                <li>BuildingsMisc</li>
+                                </thingCategories>
+                                <placeWorkers>
+                                <li>PlaceWorker_ShowFacilitiesConnections</li>
+                                </placeWorkers>
+                            </ThingDef>
+                        </value>
+                    </li>  
+
+                    <!-- hide MO bellows-->
+                    <li Class="PatchOperationReplace">
+                      <xpath>Defs/ThingDef[defName="DankPyon_Bellows"]/designationCategory</xpath>
                       <value>
                         <designationCategory></designationCategory>
                       </value>
+                    </li>
+
+                    <li Class="PatchOperationRemove">
+                      <xpath>Defs/ThingDef[defName="DankPyon_Bellows"]/researchPrerequisites</xpath>
                     </li>
 
                     <!-- forge bellows -->
@@ -264,7 +644,15 @@
                             </ReplaceLib.ReplacerDef>
                         </value>
                     </li>
-                    
+
+                    <!-- hide MO palisade walls -->
+                    <li Class="PatchOperationReplace">
+                      <xpath>Defs/ThingDef[defName="DankPyon_Palisade"]/designationCategory</xpath>
+                      <value>
+                        <designationCategory></designationCategory>
+                      </value>
+                    </li>
+
                     <!-- palisade walls -->
                     <li Class="PatchOperationAdd">
                         <xpath>/Defs</xpath>
