@@ -38,7 +38,7 @@
                     <li Class="PatchOperationReplace">
                         <xpath>Defs/ThingDef[defName="DankPyon_Apiary"]/description</xpath>
                         <value>
-                            <description>An artifical hornet nest. An extraordinary structure crafted from wood, clay, iron and woven straw. The hive houses a swarm of specially bred hornets, nurtured to produce a unique, viscous substance known as hornet honey. Unlike ordinary honey, hornet honey is rich in nutrients, granting those who consume it bursts of energy and resilience—an invaluable resource for knights preparing for battle or peasants enduring harsh winters. The cultivation of horney honey is a very time consuming process.</description>
+                            <description>An artifical hornet nest. An extraordinary structure crafted from wood, clay, iron and woven straw. The hive houses a swarm of specially bred hornets, nurtured to produce a unique, viscous substance known as hornet honey. Unlike ordinary honey, hornet honey is rich in nutrients, granting those who consume it bursts of energy and resilience—an invaluable resource for knights preparing for battle or peasants enduring harsh winters. The cultivation of hornet honey is a very time consuming process.</description>
                         </value>
                     </li>
 
