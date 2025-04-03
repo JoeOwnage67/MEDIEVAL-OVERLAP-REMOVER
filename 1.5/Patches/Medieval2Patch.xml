@@ -91,40 +91,34 @@
                     </li>
 
                     <!-- hide VFEM2 barrels -->
-                    <li Class="PatchOperationRemove">
+                    <!--<li Class="PatchOperationRemove">
                       <xpath>Defs/ThingDef[defName="VFEM2_MeadFermentingBarrel"]/researchPrerequisites</xpath>                                       
-                    </li>
-
-                    <!--<li Class="PatchOperationReplace">
-                      <xpath>Defs/ThingDef[defName="VFEM2_MeadFermentingBarrel"]/designationCategory</xpath>
-                      <value>
-                        <designationCategory></designationCategory>
-                      </value>
-                    </li>-->
+                    </li>                    
 
                     <li Class="PatchOperationRemove">
                       <xpath>Defs/ThingDef[defName="VFEM2_WineBarrel"]/researchPrerequisites</xpath>                                       
+                    </li> --> 
+
+                    <li Class="PatchOperationRemove">
+                        <xpath>Defs/ThingDef[defName="BarrelProcessor"]/comps/li[@Class="ProcessorFramework.CompProperties_Processor"]/processes/li[.="VFEM2_Wine"]</xpath>
                     </li>
 
-                    <!--<li Class="PatchOperationReplace">
-                      <xpath>Defs/ThingDef[defName="VFEM2_WineBarrel"]/designationCategory</xpath>
-                      <value>
-                        <designationCategory></designationCategory>
-                      </value>
-                    </li>-->
+                    <li Class="PatchOperationRemove">
+                        <xpath>Defs/ThingDef[defName="BarrelProcessor"]/comps/li[@Class="ProcessorFramework.CompProperties_Processor"]/processes/li[.="VFEM2_Mead"]</xpath>
+                    </li>                  
 
                     <!-- remove VFEM2 from processor barrel-->
-                    <li Class="PatchOperationReplace">
+                    <!--<li Class="PatchOperationReplace">
                         <xpath>Defs/ThingDef[defName="BarrelProcessor"]/comps/li[@Class="ProcessorFramework.CompProperties_Processor"]/processes</xpath>
                         <value>
                             <processes>
                                 <li>Beer</li>
                             </processes>
                         </value>
-                    </li>
+                    </li>-->
 
                     <!-- add MO recipes back to processor -->
-                    <li Class="PatchOperationAdd">
+                    <!--<li Class="PatchOperationAdd">
                         <xpath>Defs/ThingDef[defName="BarrelProcessor"]/comps/li[1]/processes</xpath>
                         <value>
                             <li>DankPyon_WortIntoAle</li>
@@ -134,7 +128,7 @@
                             <li>DankPyon_MustIntoGriffonBerry</li>
                             <li MayRequire="DankPyon.Medieval.Overhaul.House.Roxmont">DankPyon_RoxberryStoutWort_Into_RoxberryStout</li>
                         </value>
-                    </li>
+                    </li>-->
 
                     <!-- put wine behind VFEM2_Wine -->
                     <li Class="PatchOperationReplace">
