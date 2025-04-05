@@ -27,5 +27,6 @@
 		<li>ferny.ReplaceLib</li>
 		<li>DankPyon.Medieval.Overhaul</li>
 		<li>OskarPotocki.VFE.Medieval2</li>
+        <li>syrchalis.processor.framework</li>
 	</loadAfter>
 </ModMetaData>

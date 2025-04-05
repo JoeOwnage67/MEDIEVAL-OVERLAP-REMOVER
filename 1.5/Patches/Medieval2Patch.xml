@@ -333,7 +333,17 @@
                                 </replacers>
                             </ReplaceLib.ReplacerDef>
                         </value>
-                    </li>   
+                    </li>
+
+                    <!-- castle wall research -->   
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[@Name="DankPyon_CastleWallBase"]/researchPrerequisites</xpath>
+                        <value>
+                            <researchPrerequisites>
+                                <li>VFEM2_MedievalArchitecture</li>
+                            </researchPrerequisites>
+                        </value>
+                    </li>
 
                     <!-- hearth -->
                     <li Class="PatchOperationReplace">
