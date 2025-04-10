@@ -28,5 +28,6 @@
 		<li>DankPyon.Medieval.Overhaul</li>
 		<li>OskarPotocki.VFE.Medieval2</li>
         <li>syrchalis.processor.framework</li>
+        <li>ferny.ProgressionScenarios</li>
 	</loadAfter>
 </ModMetaData>

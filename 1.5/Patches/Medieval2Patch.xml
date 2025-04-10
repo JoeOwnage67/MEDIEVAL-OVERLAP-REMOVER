@@ -6,6 +6,11 @@
 	<Operation Class="PatchOperationSequence">
                 <operations>
 
+                <!-- remove new kingdom start (bugged as all hell every time I try it) -->
+                <li Class="PatchOperationRemove">
+                    <xpath>Defs/ScenarioDef[defName="VFEM2_NewKingdom"]</xpath>
+                </li>
+
                 <!-- apiary/honey/honeycomb/mead -->
                 <!-- Ferny and I realized that VFE honey is C#, so we can't change VFE honey to MO honey-->
                     <li Class="PatchOperationAdd">
