@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Patch>
+
+<!-- VFE MEDIEVAL 2 OVERLAP -->
+	<Operation Class="PatchOperationSequence">
+                <operations>
+
+                <!-- Flour Stuff -->
+              
+                    <li Class="PatchOperationAdd">
+                        <xpath>/Defs</xpath>
+                        <value>
+                            <ReplaceLib.ReplacerDef>
+                                <defName>JOE_MO_VCookE_FlourStuff</defName>
+                                <replacers>
+                                    <li>
+                                        <replace>VCE_Flour</replace>
+                                        <with>DankPyon_Flour</with>
+                                    </li>                                   
+                                    <li>
+                                        <replace>VCE_Wheat</replace>
+                                        <with>DankPyon_Plant_Wheat</with>
+                                    </li>
+                                </replacers>
+                            </ReplaceLib.ReplacerDef>
+                        </value>
+                    </li>
+
+               
+                </operations>
+	</Operation>
+</Patch>	
