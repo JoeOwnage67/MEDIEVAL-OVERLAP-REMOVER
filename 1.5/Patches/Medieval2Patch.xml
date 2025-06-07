@@ -470,9 +470,9 @@
                         </value>
                     </li>
 
-                    <!-- hide MO palisade walls -->
+                    <!-- hide VFEM2 palisade walls -->
                     <li Class="PatchOperationReplace">
-                      <xpath>Defs/ThingDef[defName="DankPyon_Palisade"]/designationCategory</xpath>
+                      <xpath>Defs/ThingDef[defName="VFEM2_Palisade"]/designationCategory</xpath>
                       <value>
                         <designationCategory></designationCategory>
                       </value>
@@ -486,29 +486,38 @@
                                 <defName>JOE_MO_VFEM2_PalisadeWalls</defName>
                                 <replacers>
                                     <li>
-                                        <replace>DankPyon_Palisade</replace>
-                                        <with>VFEM2_Palisade</with>
+                                        <replace>VFEM2_Palisade</replace>
+                                        <with>DankPyon_Palisade</with>
                                     </li>
                                 </replacers>
                             </ReplaceLib.ReplacerDef>
                         </value>
                     </li>
                     
-                    <li Class="PatchOperationReplace">
+                    <!--<li Class="PatchOperationReplace">
                     <xpath>Defs/ThingDef[defName="VFEM2_Palisade"]/stuffCategories</xpath>
                     <value>
                         <stuffCategories>
                         			<li>DankPyon_RawWood</li>
                         </stuffCategories>
                     </value>
-                  </li>
+                  </li>-->
                   
-                    <li Class="PatchOperationReplace">
+                    <!--<li Class="PatchOperationReplace">
                         <xpath>Defs/ThingDef[defName="VFEM2_Palisade"]/costStuffCount</xpath>
                         <value>
                             <costStuffCount>8</costStuffCount>
                         </value>
-                    </li> 
+                    </li>-->
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="DankPyon_Palisade"]/graphicData/texPath</xpath>
+                        <value>
+                            <texPath>Things/Building/Linked/Palisade/Palisade_Atlas</texPath>
+                        </value>
+                    </li>
+                    
+                    
 
                 </operations>
 	</Operation>
