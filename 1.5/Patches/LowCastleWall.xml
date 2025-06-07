@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Patch>
+    <Operation Class="PatchOperationConditional">
+	    <xpath>/Defs/ThingDef[defName="VFEM2_LowCastleWall"]/passability</xpath>
+		<match Class="PatchOperationReplace">
+		    <xpath>/Defs/ThingDef[defName="VFEM2_LowCastleWall"]/passability</xpath>
+			<value>
+			    <passability>Impassable</passability>
+		    </value>
+		</match>
+		<nomatch Class="PatchOperationAdd">
+			<xpath>/Defs/ThingDef[defName="VFEM2_LowCastleWall"]</xpath>
+			<value>
+				<passability>Impassable</passability>
+			</value>
+		</nomatch>         
+    </Operation>
+</Patch>
+
