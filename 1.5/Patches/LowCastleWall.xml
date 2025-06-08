@@ -2,17 +2,17 @@
 
 <Patch>
     <Operation Class="PatchOperationConditional">
-	    <xpath>/Defs/ThingDef[defName="VFEM2_LowCastleWall"]/passability</xpath>
+	    <xpath>/Defs/ThingDef[defName="VFEM2_LowCastleWall"]/pathCost</xpath>
 		<match Class="PatchOperationReplace">
-		    <xpath>/Defs/ThingDef[defName="VFEM2_LowCastleWall"]/passability</xpath>
+		    <xpath>/Defs/ThingDef[defName="VFEM2_LowCastleWall"]/pathCost</xpath>
 			<value>
-			    <passability>Impassable</passability>
+			    <pathCost>500</pathCost>
 		    </value>
 		</match>
 		<nomatch Class="PatchOperationAdd">
 			<xpath>/Defs/ThingDef[defName="VFEM2_LowCastleWall"]</xpath>
 			<value>
-				<passability>Impassable</passability>
+				<pathCost>500</pathCost>
 			</value>
 		</nomatch>         
     </Operation>
