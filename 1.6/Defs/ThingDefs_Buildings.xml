@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+    <ThingDef ParentName="BuildingBase">
+		<defName>Joe_HornetNest</defName>
+		<label>artifical hornet nest</label>
+		<description>An artifical hornet nest. An extraordinary structure crafted from wood, clay, iron and woven straw. The hive houses a swarm of specially bred hornets, nurtured to produce a unique, viscous substance known as hornet honey. Unlike ordinary honey, hornet honey is rich in nutrients, granting those who consume it bursts of energy and resilience—an invaluable resource for knights preparing for battle or peasants enduring harsh winters. The cultivation of hornet honey is a very time consuming process.</description>
+		<thingClass>Building</thingClass>
+		<graphicData>
+			<texPath>Production/ArtificialHornetNest</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1.5,1.5)</drawSize>
+			<drawRotated>false</drawRotated>
+            <ignoreThingDrawColor>true</ignoreThingDrawColor>
+		</graphicData>
+		<size>(1,1)</size>
+		<uiIconScale>0.5</uiIconScale>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0.45</fillPercent>
+		<castEdgeShadows>true</castEdgeShadows>
+		<pathCost>45</pathCost>
+		<costList>
+            <DankPyon_IronIngot>5</DankPyon_IronIngot>
+            <Joe_HornetQueen>1</Joe_HornetQueen>
+            <DankPyon_Clay>15</DankPyon_Clay>
+            <DankPyon_Straw>10</DankPyon_Straw>
+        </costList>
+		<stuffCategories>
+			<li>Woody</li>
+		</stuffCategories>
+		<costStuffCount>60</costStuffCount>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<WorkToBuild>2000</WorkToBuild>
+			<Mass>10</Mass>
+			<Flammability>1</Flammability>
+			<Beauty>0.5</Beauty>
+		</statBases>
+		<tickerType>Normal</tickerType>
+		<surfaceType>Item</surfaceType>
+		<canOverlapZones>false</canOverlapZones>
+		<comps>
+			<li Class="MedievalOverhaul.CompProperties_ThingProducer">
+				<requireFuelCustom>true</requireFuelCustom>
+				<restAtNight>true</restAtNight>
+				<viableTempRange>13,37</viableTempRange>
+				<timeRequired>750000</timeRequired>				<!-- 60 000 ticks equal 1 day-->
+				<random>false</random>
+				<items>
+                    <li>
+                        <thingDef>DankPyon_HornetHoney</thingDef>
+                        <countRange>3~6</countRange>
+                        <weight>1</weight>
+                    </li>
+                    <li>
+                        <thingDef>Joe_HornetQueen</thingDef>
+                        <countRange>-25~1</countRange>
+                        <weight>1</weight>
+                    </li>
+                </items>
+			</li>
+			<li Class="MedievalOverhaul.CompProperties_RefuelableCustom">
+				<fuelConsumptionRate>0.20</fuelConsumptionRate>
+				<fuelCapacity>1</fuelCapacity>
+				<autoRefuelPercent>0.2</autoRefuelPercent>
+				<initialFuelPercent>0</initialFuelPercent>
+				<fuelConsumptionPerTickInRain>0.00006</fuelConsumptionPerTickInRain>
+				<fuelFilter>
+					<categories>
+						<li>MeatRaw</li>
+					</categories>
+				</fuelFilter>
+				<defaultIngredientFilter>
+					<disallowedCategories>
+						<li>EggsFertilized</li>
+					</disallowedCategories>
+				</defaultIngredientFilter>
+				<consumeFuelOnlyWhenUsed>false</consumeFuelOnlyWhenUsed>
+				<destroyOnNoFuel>false</destroyOnNoFuel>
+				<showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
+				<showFuelGizmo>true</showFuelGizmo>
+				<drawOutOfFuelOverlay>true</drawOutOfFuelOverlay>
+				<fuelIconPath>UI/EmptyMeat_Icon</fuelIconPath>
+				<fuelGizmoLabel>Meat</fuelGizmoLabel>
+			</li>
+		</comps>
+		<researchPrerequisites>
+			<li>VFEM2_Beekeeping</li>
+		</researchPrerequisites>
+		<designationCategory>Production</designationCategory>
+		<techLevel>Medieval</techLevel>
+		<inspectorTabs>
+			<li>MedievalOverhaul.ITab_Fuel</li>
+		</inspectorTabs>
+	</ThingDef>
+
+  
+</Defs>
